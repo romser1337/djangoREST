@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Client as cl
+participant Django as dj
+participant Postgres as pg
+
+cl -> dj: Log In Request
+cl <-- dj: Log In Response
+|||
+cl -> dj: Get Coverage Prediction Request
+
+dj -> pg: Get GeoJSON collection Request
+dj <-- pg: Get GeoJSON collection Response
+
+cl <-- dj: Get Coverage Prediction Response
+@enduml
