@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Client as cl
+participant Django as dj
+participant ML as ml
+
+cl -> dj: Dismantle site Request
+dj -> ml: ML prediction Request
+dj <-- ml: ML prediction Response (raster/GeoJSON)
+cl <-- dj: Dismantle site Response
+
+
+@enduml
