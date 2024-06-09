@@ -30,6 +30,8 @@ def get_cells(request):
 
 @api_view(['GET'])
 def dismantle_site(request):
+    cells = request.GET.getlist('cells[]', [])
+    sites = request.GET.getlist('sites[]', [])
     # some code
     # geojson = function(siteid)
-    return Response(json.loads())
+    return Response(cells)
