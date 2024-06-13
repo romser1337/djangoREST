@@ -109,7 +109,7 @@ DATABASES = {
 
         'PASSWORD': 'django2024',
 
-        'HOST': '127.0.0.1',
+        'HOST': 'my-postgres',
 
         'PORT': '5432',
 
