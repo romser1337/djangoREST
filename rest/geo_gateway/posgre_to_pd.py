@@ -2,15 +2,17 @@ import psycopg2
 import pandas as pd
 import sys
 import math
+from django.conf import settings
 
 def connect():
     conn = None
+    print(settings.DATABASES['default'])
     try:
         conn = psycopg2.connect(
-                   host='localhost',
-                   database='postgres',
-                   user='django',
-                   password='django2024')
+                   host=settings.DATABASES['default']['HOST'],
+                   database=settings.DATABASES['default']['NAME'],
+                   user=settings.DATABASES['default']['USER'],
+                   password=settings.DATABASES['default']['PASSWORD'])
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
         sys.exit(1)

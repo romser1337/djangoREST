@@ -6,11 +6,19 @@ autonumber
 participant Client as cl
 participant Django as dj
 participant ML as ml
+participant Geoserver as gs
 
 cl -> dj: Dismantle site Request
+activate dj
 dj -> ml: ML prediction Request
 dj <-- ml: ML prediction Response (raster/GeoJSON)
+dj -> gs: Publish (raster/GeoJSON) Request
+dj <-- gs: Publish (raster/GeoJSON) Response
 cl <-- dj: Dismantle site Response
+deactivate dj
+cl -> gs: (raster/GeoJSON) Request
+cl <-- gs: (raster/GeoJSON) Response
+
 
 
 @enduml
