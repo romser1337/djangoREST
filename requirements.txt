@@ -22,7 +22,8 @@ djoser==2.2.2
 docopt==0.6.2
 fastjsonschema==2.19.1
 fiona==1.9.6
-gdal-bin
+fonttools==4.53.0
+gdal
 geopandas==0.14.4
 geoserver-rest==2.7.0
 greenlet==3.0.3
