@@ -64,3 +64,4 @@ urllib3==2.2.1
 wcwidth==0.2.13
 webencodings==0.5.1
 xmltodict==0.13.0
+gunicorn==21.2.0

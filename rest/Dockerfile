@@ -17,4 +17,4 @@ RUN pip install geoserver-rest
 
 COPY .. .
 
-CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8000", "--noreload"]
+#CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8080", "--noreload"]
