@@ -16,5 +16,5 @@ RUN pip install gdal==2.4.0
 RUN pip install geoserver-rest
 
 COPY .. .
-
+RUN gunicorn rest.wsgi:application --bind 0.0.0.0:8000
 #CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8080", "--noreload"]
