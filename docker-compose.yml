@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: ghcr.io/romser1337/node1:latest
+    image: ghcr.io/romser1337/django:latest
     build:
       context: ./rest
       dockerfile: Dockerfile
@@ -26,4 +26,5 @@ volumes:
 
 networks:
   default:
+    external: true
     name: mynetwork

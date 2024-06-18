@@ -28,4 +28,4 @@ jobs:
       run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/nginx:latest
 
     - name: Push image Django
-      run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/node1:latest
+      run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/django:latest
