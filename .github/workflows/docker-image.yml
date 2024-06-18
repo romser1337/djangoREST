@@ -23,7 +23,7 @@ jobs:
       run: docker build . --file rest/Dockerfile --tag django:latest --label "runnumber=${GITHUB_RUN_ID}"
 
     - name: Build the Nginx image
-      run: docker build . --file rest/Dockerfile --tag nginx:latest --label "runnumber=${GITHUB_RUN_ID}"
+      run: docker build . --file nginx/Dockerfile --tag nginx:latest --label "runnumber=${GITHUB_RUN_ID}"
 
     - name: Log in to registry
       run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
