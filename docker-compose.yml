@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+    image: node1:latest
     build:
       context: ./rest
       dockerfile: Dockerfile
@@ -11,6 +12,7 @@ services:
     expose:
       - 8000
   nginx:
+    image: nginx:latest
     build:
       context: ./nginx
     volumes:
