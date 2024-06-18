@@ -10,7 +10,6 @@ RUN apt install -y g++
 RUN pip install "setuptools<58.0.0"
 
 COPY requirements.txt requirements.txt
-COPY gunicorn_config.py gunicorn_config.py
 
 RUN pip install -r requirements.txt
 RUN pip install gdal==2.4.0
