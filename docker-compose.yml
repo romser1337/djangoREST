@@ -7,20 +7,8 @@ services:
       context: ./rest
       dockerfile: Dockerfile
     command: gunicorn rest.wsgi:application --bind 0.0.0.0:8000
-    volumes:
-      - static_volume:/home/app/web/staticfiles
-    expose:
-      - 8000
-  nginx:
-    image: ghcr.io/romser1337/nginx
-    build:
-      context: ./nginx
-    volumes:
-      - static_volume:/home/app/web/staticfiles
     ports:
-      - 1337:80
-    depends_on:
-      - web
+      - 8000:8000
 volumes:
   static_volume:
 
