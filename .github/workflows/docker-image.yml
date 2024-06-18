@@ -24,5 +24,8 @@ jobs:
     - name: Log in to registry
       run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Push image
-      run: docker push "${{ env.REGISTRY }}"/"${{ env.IMAGE_NAME }}"
+    - name: Push image nginx
+      run: docker push nginx:latest
+
+    - name: Push image django
+      run: docker push node1:latest
