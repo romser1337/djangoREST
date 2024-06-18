@@ -1,6 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
+from geo.Geoserver import Geoserver
+import time
+import os
 from . import posgre_to_pd as ptp
 import json
 
@@ -32,6 +34,22 @@ def get_cells(request):
 def dismantle_site(request):
     cells = request.GET.getlist('cells[]', [])
     sites = request.GET.getlist('sites[]', [])
-    # some code
-    # geojson = function(siteid)
-    return Response(cells)
+    # creating layer name
+    current_timestamp = time.time()
+    layer_name = sites[0] + str(current_timestamp)
+
+    # hardcoded predefined workspace
+    workspace = 'dismantle'
+
+    # open tiff file
+    file_data = open(r'/rest/geo_gateway/static/raster_test_output_rgba.tif')
+    file = file_data.name
+
+    # publishing geolayer
+    geo = Geoserver('http://geoserver:8080/geoserver', username='admin', password='geoserver')
+    geo.create_coveragestore(layer_name=layer_name,
+                             path=file,
+                             workspace='dismantle')
+    file_data.close()
+    # response data
+    return Response({'workspace': workspace, 'layer': layer_name})
