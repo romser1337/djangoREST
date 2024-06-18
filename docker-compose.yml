@@ -24,7 +24,7 @@ services:
 volumes:
   static_volume:
 
-networks:
-  default:
-    external: true
-    name: mynetwork
+#networks:
+#  default:
+#    external: true
+#    name: mynetwork
