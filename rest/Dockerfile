@@ -17,7 +17,6 @@ RUN pip install geoserver-rest
 
 COPY ./ .
 
-EXPOSE 8000
 #CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "wsgi:application"]
 CMD ["gunicorn", "--config", "gunicorn_config.py", "rest.wsgi:application"]
 
