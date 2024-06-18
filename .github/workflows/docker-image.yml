@@ -25,7 +25,7 @@ jobs:
       run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Push image Nginx
-      run: docker push "${{ env.REGISTRY }}"/nginx:latest
+      run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/nginx:latest
 
     - name: Push image Django
-      run: docker push "${{ env.REGISTRY }}"/node1:latest
+      run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/node1:latest
