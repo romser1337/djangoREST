@@ -19,7 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ env.IMAGE_NAME }}"
+      run: docker-compose up -d
 
     - name: Log in to registry
       run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
