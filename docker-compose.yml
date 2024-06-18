@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: ./rest
-      dockerfile: Dockerfile.prod
+      dockerfile: Dockerfile
     command: gunicorn rest.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles
