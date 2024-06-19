@@ -42,7 +42,10 @@ def dismantle_site(request):
     workspace = 'dismantle'
 
     # open tiff file
-    file_data = open(r'/rest/geo_gateway/static/raster_test_output_rgba.tif')
+    # dev
+    # file_data = open(r'/rest/geo_gateway/static/raster_test_output_rgba.tif')
+    # prod
+    file_data = open(r'/rest/rest/geo_gateway/static/raster_test_output_rgba.tif')
     file = file_data.name
 
     # publishing geolayer
