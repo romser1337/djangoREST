@@ -16,6 +16,9 @@ RUN pip install -r requirements.txt
 RUN pip install gdal==2.4.0
 RUN pip install geoserver-rest
 
+#RUN python manage.py collectstatic
+CMD [ "python3", "rest/manage.py", "runserver", "0.0.0.0:8080", "--noreload"]
+
 COPY ./ .
 
 #CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "wsgi:application"]
