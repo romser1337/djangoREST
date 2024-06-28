@@ -2,14 +2,12 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from geo.Geoserver import Geoserver
 import time
-import os
 from . import posgre_to_pd as ptp
 import json
 
 ### iPrism modules import
 from modules.db_handler import DBHandler
-from modules.vis_geomaps import pix_data_site_switch_off, raster_transform_django_test, get_visualization_params
-from modules.db_fetcher_geo import generate_raster
+from modules.vis_geomaps import raster_transform_django_test, get_visualization_params
 from modules.dt_geosimulator import dt_geosimulator
 
 ### Create folders in the container:
