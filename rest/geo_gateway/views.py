@@ -8,7 +8,7 @@ import json
 
 ### iPrism modules import
 from modules.db_handler import DBHandler
-from modules.vis_geomaps import pix_data_site_switch_off, raster_transform, get_visualization_params
+from modules.vis_geomaps import pix_data_site_switch_off, raster_transform_django_test, get_visualization_params
 from modules.db_fetcher_geo import generate_raster
 from modules.dt_geosimulator import dt_geosimulator
 
