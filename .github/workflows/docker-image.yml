@@ -18,11 +18,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Extract branch name
+      shell: bash
+      run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+      id: extract_branch
+
+    - name: Character replacement
+      shell: bash
+      run: |
+        branch=${{ steps.extract_branch.outputs.branch }}
+        BRANCH_NAME="${branch////-}"
+        echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
+      id: replace_branch
+
+
     - name: Build the Docker image
-      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django:latest
+#      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django:latest
+      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django-"${{ steps.replace_branch.outputs.branch }}":latest
 
     - name: Log in to registry
       run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
     - name: Push image Django
-      run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/django:latest
+      run: docker push "${{ env.REGISTRY }}"/"${{ github.actor }}"/django-"${{ steps.replace_branch.outputs.branch }}":latest
