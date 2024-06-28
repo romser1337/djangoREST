@@ -4,7 +4,7 @@ services:
   django:
     environment:
       IMAGE_TAG: ${IMAGE_TAG}
-    image: "ghcr.io/romser1337/django-${IMAGE_TAG}:latest"
+    image: "ghcr.io/romser1337/django-master:latest"
     build:
       context: ./rest
     command: gunicorn rest.wsgi:application --bind 0.0.0.0:8000
@@ -12,26 +12,26 @@ services:
       - static_volume:/home/app/web/staticfiles
     expose:
       - 8000
-#    depends_on:
-#      - geoserver
-#      - my-postgres
-#  geoserver:
-#    image: docker.osgeo.org/geoserver:2.25.1
-#    ports:
-#      - 8080:8080
-#
-#  my-postgres:
-#    image: postgres:15
-#    environment:
-#      - POSTGRES_USER=django
-#      - POSTGRES_PASSWORD=django2024
-#      - POSTGRES_DB=postgres
-#    ports:
-#      - 5432:5432
+    depends_on:
+      - geoserver
+      - my-postgres
+  geoserver:
+    image: docker.osgeo.org/geoserver:2.25.1
+    ports:
+      - 8080:8080
+
+  my-postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=django
+      - POSTGRES_PASSWORD=django2024
+      - POSTGRES_DB=postgres
+    ports:
+      - 5432:5432
 volumes:
   static_volume:
 
-#networks:
-#  default:
-#    external: true
-#    name: mynetwork
+networks:
+  default:
+    external: true
+    name: mynetwork

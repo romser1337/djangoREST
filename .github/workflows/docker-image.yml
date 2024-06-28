@@ -32,14 +32,14 @@ jobs:
         echo "branch=$BRANCH_NAME" >> $GITHUB_OUTPUT
       id: replace_branch
 
-    - name: Build the Docker image
-      env:
-        IMAGE_TAG: ${{ steps.replace_branch.outputs.branch }}
-      run: IMAGE_TAG=${{env.IMAGE_TAG }} docker-compose up -d
-
 #    - name: Build the Docker image
-#      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django:latest
-#      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django-"${{ steps.replace_branch.outputs.branch }}":latest
+#      env:
+#        IMAGE_TAG: ${{ steps.replace_branch.outputs.branch }}
+#      run: IMAGE_TAG=${{env.IMAGE_TAG }} docker-compose up -d
+
+    - name: Build the Docker image
+      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django:latest
+      run: docker build . --file rest/Dockerfile --tag "${{ env.REGISTRY }}"/"${{ github.actor }}"/django-"${{ steps.replace_branch.outputs.branch }}":latest
 
     - name: Log in to registry
       run: echo "${{ secrets.PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
