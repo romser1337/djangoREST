@@ -2,24 +2,26 @@ version: '3.8'
 
 services:
   django:
+    container_name: django
     environment:
       IMAGE_TAG: ${IMAGE_TAG}
     build:
       context: ./rest
-    command: gunicorn rest.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/home/app/web/staticfiles
-    expose:
-      - 8000
+    ports:
+      - 8000:8000
     depends_on:
       - geoserver
       - my-postgres
   geoserver:
+    container_name: geoserver
     image: docker.osgeo.org/geoserver:2.25.1
     ports:
       - 8080:8080
 
   my-postgres:
+    container_name: my-postgres
     image: postgres:15
     environment:
       - POSTGRES_USER=django
