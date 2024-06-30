@@ -12,7 +12,10 @@ from modules.vis_geomaps import raster_transform_django_test, get_visualization_
 from modules.dt_geosimulator import dt_geosimulator
 from modules.db_fetcher_geo import db_fetcher
 
-geoserver_url = "http://localhost:8080/geoserver/rest"
+# dev
+# geoserver_url = "http://localhost:8080/geoserver/rest"
+# prod
+geoserver_url = "http://geoserver:8080/geoserver/rest"
 username = "admin"
 password = "geoserver"
 
