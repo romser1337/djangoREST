@@ -111,7 +111,7 @@ DATABASES = {
 
         'HOST': 'iprism-postgres',
 
-        'PORT': '5431',
+        'PORT': '5432',
 
     }
 
