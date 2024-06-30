@@ -109,7 +109,7 @@ DATABASES = {
 
         'PASSWORD': 'django2024',
 
-        'HOST': 'postgres',
+        'HOST': 'iprism-postgres',
 
         'PORT': '5432',
 
