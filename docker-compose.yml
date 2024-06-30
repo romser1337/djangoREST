@@ -22,13 +22,13 @@ services:
 
   my-postgres:
     container_name: my-postgres
-    image: postgres:15
+    image: postgres:16
     environment:
       - POSTGRES_USER=django
       - POSTGRES_PASSWORD=django2024
       - POSTGRES_DB=postgres
     ports:
-      - 5432:5432
+      - 5431:5431
 volumes:
   static_volume:
 

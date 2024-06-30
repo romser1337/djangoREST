@@ -111,7 +111,7 @@ DATABASES = {
 
         'HOST': 'my-postgres',
 
-        'PORT': '5432',
+        'PORT': '5431',
 
     }
 
