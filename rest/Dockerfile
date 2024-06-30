@@ -4,8 +4,8 @@ FROM python:3.10.6-slim-buster
 
 WORKDIR /rest
 RUN apt-get update
-#RUN apt-get install -y gdal-bin
-#RUN apt-get install -y libgdal-dev
+RUN apt-get install -y gdal-bin
+RUN apt-get install -y libgdal-dev
 RUN apt install -y g++
 RUN pip install "setuptools<58.0.0"
 
@@ -13,8 +13,8 @@ COPY requirements.txt requirements.txt
 COPY gunicorn_config.py gunicorn_config.py
 
 RUN pip install -r requirements.txt
-#RUN pip install gdal==2.4.0
-#RUN pip install geoserver-rest
+RUN pip install gdal==2.4.0
+RUN pip install geoserver-rest
 
 #RUN python manage.py collectstatic
 #CMD [ "python3", "rest/manage.py", "runserver", "0.0.0.0:8080", "--noreload"]
