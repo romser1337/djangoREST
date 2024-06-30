@@ -6,8 +6,8 @@ WORKDIR /rest
 RUN apt-get update
 #RUN apt-get install -y gdal-bin
 #RUN apt-get install -y libgdal-dev
-#RUN apt install -y g++
-#RUN pip install "setuptools<58.0.0"
+RUN apt install -y g++
+RUN pip install "setuptools<58.0.0"
 
 COPY requirements.txt requirements.txt
 COPY gunicorn_config.py gunicorn_config.py
