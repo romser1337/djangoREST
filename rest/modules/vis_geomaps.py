@@ -296,7 +296,7 @@ def raster_transform_django_test(raster_file, vmin, vmax, cmap_name, n_legend_en
         dtype = rasterio.uint8
         memfile = BytesIO()
         with rasterio.open(
-                memfile, 'w', driver='GTiff',
+                memfile, 'w', driver='GTiff',encoding="utf-8",name='dismantle.tif',
                 height=height, width=width,
                 count=bands, dtype=dtype,
                 crs=crs, transform=transform) as dst:
@@ -314,13 +314,13 @@ def raster_transform_django_test(raster_file, vmin, vmax, cmap_name, n_legend_en
 
     
     # disk save option
-    print('debug raster_transform: saving 3 and 4 channel rasters')
-    output_rgb_file = 'data/temp_rasters/raster_test_output_rgb.tif'
-    output_rgba_file = 'data/temp_rasters/raster_test_output_rgba.tif'
-    save_colored_raster(colored_raster, output_rgb_file, crs, transform, 3)
-    save_colored_raster(colored_raster, output_rgba_file, crs, transform, 4)
-    print('debug raster_transform: saving complete')
-    
+    # print('debug raster_transform: saving 3 and 4 channel rasters')
+    # output_rgb_file = 'data/temp_rasters/raster_test_output_rgb.tif'
+    # output_rgba_file = 'data/temp_rasters/raster_test_output_rgba.tif'
+    # save_colored_raster(colored_raster, output_rgb_file, crs, transform, 3)
+    # save_colored_raster(colored_raster, output_rgba_file, crs, transform, 4)
+    # print('debug raster_transform: saving complete')
+    #
 
     ### END TEMP section
 
@@ -331,7 +331,7 @@ def raster_transform_django_test(raster_file, vmin, vmax, cmap_name, n_legend_en
         color = cmap(i / (n_legend_entries - 1))
         legend[f"{value:.2f}"] = color
 
-    return memfile_rgb, memfile_rgba, output_rgb_file, output_rgba_file, legend, [[ymin, xmin], [ymax, xmax]]
+    return memfile_rgb, memfile_rgba, legend, [[ymin, xmin], [ymax, xmax]]
 
 
 

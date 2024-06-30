@@ -188,7 +188,7 @@ class dt_geosimulator(DBHandler):
         # Calculate offload_coef and coverage_loss
         # Calculate 'offload_coef' only where 'traffic_remain' is greater than 0
         #print('sw_off_aggr.dtypes\n', sw_off_aggr.dtypes)
-        sw_off_aggr.to_csv('temp_code/sw_off_aggr.csv')
+        # sw_off_aggr.to_csv('temp_code/sw_off_aggr.csv')
 
         sw_off_aggr['offload_coef'] = np.where(
             sw_off_aggr['traffic_remain'] > 0, 

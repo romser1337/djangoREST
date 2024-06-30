@@ -251,26 +251,26 @@ class db_fetcher(DBHandler):
 
         ### clearing recent files from the folder before adding new one
 
-        ts=time.time()
-        # Filter files older than 3 hours
-        files_sector = glob.glob('data/temp_rasters/sector_raster*.tif') + glob.glob('temp_rasters/sector_raster*.xml')
-        files_sector = [file for file in files_sector if os.path.getmtime(file) < time.time() - 6 * 3600]
-        for file in files_sector:
-            os.remove(file)
-        print('Generate_raster function:\n Found next files for clearing', files_sector)
-        te=time.time()
-        td=te-ts
-        print('Files above have been cleared and took', td, 'seconds')
+        # ts=time.time()
+        # # Filter files older than 3 hours
+        # files_sector = glob.glob('data/temp_rasters/sector_raster*.tif') + glob.glob('temp_rasters/sector_raster*.xml')
+        # files_sector = [file for file in files_sector if os.path.getmtime(file) < time.time() - 6 * 3600]
+        # for file in files_sector:
+        #     os.remove(file)
+        # # print('Generate_raster function:\n Found next files for clearing', files_sector)
+        # te=time.time()
+        # td=te-ts
+        # # print('Files above have been cleared and took', td, 'seconds')
 
 
         timestamp=time.time()
-        raster_filename = f'data/temp_rasters/sector_raster_switchoff_{timestamp}.tif'
+        raster_filename = f'sector_raster_switchoff_{timestamp}.tif'
 
         with rasterio.open(raster_filename, 'w', driver='GTiff', height=rows, width=cols, count=1, dtype='float32',
                            crs=gdf.crs, transform=transform, compress='deflate', tiled=True, predictor=2) as dst:
             dst.write(out_array, 1)
 
-        #print('Raster is ready', raster_filename)
+        print('Raster is ready', raster_filename)
         return raster_filename
 
 
