@@ -13,7 +13,7 @@ from sqlalchemy import create_engine  # for df_to_sql method
 
 class DBHandler:
 
-    def __init__(self, host="postgres", port=5432, user="postgres", password="smacap", dbname=""):
+    def __init__(self, host="iprism-postgres", port=5432, user="postgres", password="smacap", dbname=""):
         # Storing the parameters as instance attributes
         self.host = host
         self.port = port
